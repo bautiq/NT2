@@ -33,7 +33,7 @@ function checkPronvincia() {
 
 }
 
-function validarForm(e) {
+function validarStep1(e) {
 	var first = false;
 	var percent = 0;
 	var error = false;
@@ -107,4 +107,10 @@ function validarForm(e) {
 	}
 
 	return error ? false : true;
+}
+
+
+function validarStep2() {
+	// step2
+	
 }
