@@ -263,12 +263,54 @@ function validarFormPaso1(e) {
 		$("#paso1").hide();
 		$("#paso2").show('slow');
 	}  
-
-
-
-
-
 }
+
+
+
+function validarFormPaso3(){
+	
+	var percent = 0;
+	var error = false;
+
+	try {
+		if (document.getElementById('txtphone').value == "") {
+			error = true;
+			document.getElementById('txtphone').setAttribute('class', 'form-control is-invalid');
+		} else {
+			//Con JQuery
+			$('#txtphone').removeClass('is-invalid').addClass('is-valid');
+			percent += 33;
+		}
+
+		if (document.getElementById('txtEmail').value == "") {
+			$('#txtEmail').addClass('is-invalid');
+			error = true;
+		} else {
+			$('#txtEmail').removeClass('is-invalid').addClass('is-valid');
+			percent += 33;
+		}
+
+		if (document.getElementById("git").value == ""){
+			error = true;
+			document.getElementById("git").setAttribute("class", "form-control is-invalid");
+		} else {
+			$('#git').removeClass('is-invalid').addClass('is-valid');
+			percent += 33;
+		}
+		
+		$(".progress-bar").css('width', percent + '%');
+
+		
+	} catch (e) {
+		console.log(e);
+	}
+
+	if(!error){
+		$("#paso3").hide();
+		$("#paso4").show('slow');
+	}  
+}
+
 //************ Mi validación del paso 4 ************ */
 function validarFormPaso4(e) {
 
@@ -352,12 +394,6 @@ function validarFormPaso4(e) {
         $("#paso4").hide();
         $("#paso5").show('slow');
     }
-
-
-
-
-
 }
-
 
 
