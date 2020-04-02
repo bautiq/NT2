@@ -349,8 +349,8 @@ function validarFormPaso4(e) {
     }
 
     if (!error) {
-        $("#paso1").hide();
-        $("#paso2").show('slow');
+        $("#paso4").hide();
+        $("#paso5").show('slow');
     }
 
 
