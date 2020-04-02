@@ -270,5 +270,60 @@ function validarFormPaso1(e) {
 
 }
 
+function validarFormPaso2(e) {
+	
+	var percent = 0;
+	var error = false;
 
+	try {
+		if (document.getElementById('txtCalle').value == "") {
+			error = true;
+			document.getElementById('txtCalle').setAttribute('class', 'form-control is-invalid');
+		} else {
+			//Con JQuery
+			$('#txtCalle').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+		
+
+		if (document.getElementById('txtAltura').value == "") {
+			$('#txtAltura').addClass('is-invalid');
+			error = true;
+		} else {
+			$('#txtAltura').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+
+		if (document.getElementById("txtDto").value == ""){
+			error = true;
+			document.getElementById("txtDto").setAttribute("class", "form-control is-invalid");
+		} else {
+			$('#txtDto').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+
+		if (document.getElementById("cmbProv").value == ""){
+			error = true;
+			document.getElementById("cmbProv").setAttribute("class", "form-control is-invalid");
+		} else {
+			$('#cmbProv').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+			
+		$(".progress-bar").css('width', percent + '%');
+
+	} catch (e) {
+		console.log(e);
+	}
+
+	if(!error){
+		$("#paso2").hide();
+		$("#paso3").show('slow');
+	}  
+
+
+
+
+
+}
 
