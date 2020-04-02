@@ -564,10 +564,10 @@
 		  
 
 			
-<!-------------------------------------------- PASO 5 ---------------------------------------------------->
+<!-------------------------------------------- PASO 5  ---------------------------------------------------->
 <br>
 
-	<div class="row" id="paso5" style="display: none;">
+	<div class="row" id="paso5" style="display: none;"> 
 		<div class="col-12"> <hr>
 			<form name="registro" onsubmit="return validarFormPaso5(event)">		
 				<h5>
@@ -579,6 +579,7 @@
 						<div class="form-group">
 							<label for="motivo">Motivo</label>
 							<select class="form-control" id="motivo">
+								<option value="seleccionar">Seleccionar Motivo</option>
 								<option value="seg"> Seguridad </option>
 								<option value="med"> Medicina </option>
 								<option value="alim"> Industria alimenticia	</option>
@@ -596,7 +597,7 @@
 								<a href="javascript:void();" data-toggle="modal" data-target="#exampleModal">Terminos y Condiciones</a>
 							</label>						
 						</div>
-						<button type="submit" class="btn btn-primary mt-3">Enviar Registro</button>
+						<button type="submit" class="btn btn-primary mt-3" id="enviar">Enviar Registro</button>
 					</div>	
 				</div>  
 			</form>

@@ -396,4 +396,38 @@ function validarFormPaso4(e) {
     }
 }
 
+function validarFormPaso5(){
+	var percent = 0;
+	var error = false;
+
+	try {
+		if (document.getElementById('motivo').value == "seleccionar") {
+			error = true;
+			document.getElementById('motivo').setAttribute('class', 'form-control is-invalid');
+		} else {
+			//Con JQuery
+			$('#txtphone').removeClass('is-invalid').addClass('is-valid');
+			percent += 50;
+		}
+
+		if (!document.getElementById("chkTerms").checked) {
+			$('#chkTerms').addClass('is-invalid');
+			error = true;
+		} else {
+			$('#chkTerms').removeClass('is-invalid').addClass('is-valid');
+			percent += 50;
+		}
+		
+		$(".progress-bar").css('width', percent + '%');
+
+		
+	} catch (e) {
+		console.log(e);
+	}
+
+	if(error){
+		return false;
+	} 
+}
+
 
