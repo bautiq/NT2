@@ -263,13 +263,55 @@ function validarFormPaso1(e) {
 		$("#paso1").hide();
 		$("#paso2").show('slow');
 	}  
-
-
-
-
-
 }
 
+
+
+function validarFormPaso3(){
+	
+	var percent = 0;
+	var error = false;
+
+	try {
+		if (document.getElementById('txtphone').value == "") {
+			error = true;
+			document.getElementById('txtphone').setAttribute('class', 'form-control is-invalid');
+		} else {
+			//Con JQuery
+			$('#txtphone').removeClass('is-invalid').addClass('is-valid');
+			percent += 33;
+		}
+
+		if (document.getElementById('txtEmail').value == "") {
+			$('#txtEmail').addClass('is-invalid');
+			error = true;
+		} else {
+			$('#txtEmail').removeClass('is-invalid').addClass('is-valid');
+			percent += 33;
+		}
+
+		if (document.getElementById("git").value == ""){
+			error = true;
+			document.getElementById("git").setAttribute("class", "form-control is-invalid");
+		} else {
+			$('#git').removeClass('is-invalid').addClass('is-valid');
+			percent += 33;
+		}
+		
+		$(".progress-bar").css('width', percent + '%');
+
+		
+	} catch (e) {
+		console.log(e);
+	}
+
+	if(!error){
+		$("#paso3").hide();
+		$("#paso4").show('slow');
+	}  
+}
+
+<<<<<<< HEAD
 function validarFormPaso2(e) {
 	
 	var percent = 0;
@@ -293,6 +335,92 @@ function validarFormPaso2(e) {
 			$('#txtAltura').removeClass('is-invalid').addClass('is-valid');
 			percent += 5;
 		}
+=======
+//************ Mi validación del paso 4 ************ */
+function validarFormPaso4(e) {
+
+    var percent = 0;
+    var error = false;
+
+    try {
+        if (document.getElementById('txtCalleLab').value == "") {
+            error = true;
+            document.getElementById('txtCalleLab').setAttribute('class', 'form-control is-invalid');
+        } else {
+            //Con JQuery
+            $('#txtCalleLab').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+
+        if (document.getElementById('txtAlturaLab').value == "") {
+            $('#txtAlturaLab').addClass('is-invalid');
+            error = true;
+        } else {
+            $('#txtAlturaLab').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+        if (document.getElementById("txtDtoLab").value == "") {
+            error = true;
+            document.getElementById("txtDtoLab").setAttribute("class", "form-control is-invalid");
+        } else {
+            $('#txtDtoLab').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+        if (document.getElementById("cmbProv_lab").value == "") {
+            error = true;
+            document.getElementById("cmbProv_lab").setAttribute("class", "form-control is-invalid");
+        } else {
+            $('#cmbProv_lab').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+        if (document.getElementById("txtphone_lab").value == "" ) {
+            error = true;
+            document.getElementById("txtphone_lab").setAttribute("class", "form-control is-invalid");
+        } else {
+            $('#txtphone_lab').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+        if (document.getElementById("mat").value == "") {
+            error = true;
+            document.getElementById("mat").setAttribute("class", "form-control is-invalid");
+        } else {
+            $('#mat').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+        if (document.getElementById("Mat").value == "") {
+            error = true;
+            document.getElementById("Mat").setAttribute("class", "form-control is-invalid");
+        } else {
+            $('#Mat').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+        if (document.getElementById("inst").value == "") {
+            error = true;
+            document.getElementById("inst").setAttribute("class", "form-control is-invalid");
+        } else {
+            $('#inst').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+        $(".progress-bar").css('width', percent + '%');
+
+    } catch (e) {
+        console.log(e);
+    }
+
+    if (!error) {
+        $("#paso4").hide();
+        $("#paso5").show('slow');
+    }
+}
+>>>>>>> 59955c10cbcd3644e86cfbc6dfa54fbc211e9c93
 
 		if (document.getElementById("txtDto").value == ""){
 			error = true;
