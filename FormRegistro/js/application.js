@@ -253,9 +253,10 @@ function validarFormPaso1() {
 
 function validarFormPaso2() {
 	
-	var percent = 0;
+	var percent = 20;
 	var error = false;
-
+	$(".progress-bar").css('width', percent + '%');
+	percent = 0;
 	try {
 		if (document.getElementById('txtCalle').value == "") {
 			error = true;
@@ -305,9 +306,10 @@ function validarFormPaso2() {
 
 function validarFormPaso3(){
 	
-	var percent = 0;
+	var percent = 40;
 	var error = false;
-
+	$(".progress-bar").css('width', percent + '%');
+	percent = 0;
 	try {
 		if (document.getElementById('txtphone').value == "") {
 			error = true;
@@ -349,9 +351,10 @@ function validarFormPaso3(){
 
 function validarFormPaso4() {
 
-    var percent = 0;
+    var percent = 60;
     var error = false;
-	
+	$(".progress-bar").css('width', percent + '%');
+	percent = 0;
     try {
         if (document.getElementById('txtCalleLab').value == "") {
             error = true;
@@ -417,6 +420,35 @@ function validarFormPaso4() {
         $("#paso5").show('slow');
     }
 }
+function validarFormPaso5(){
+	var percent = 80;
+	var error = false;
+	$(".progress-bar").css('width', percent + '%');
+	percent = 0;
+	try{
+		if(document.getElementById("motivo").value == "seleccionar"){
+			error = true;
+			$('#motivo').addClass('is-invalid');
+		} else {
+			$('#motivo').removeClass('is-invalid').addClass('is-valid');
+			percent += 50;
+		}
+		if(!document.getElementById("chkTerms").checked){
+			$('#chkTerms').addClass('is-invalid');
+			error = true;
+		} else {
+			$('#chkTerms').removeClass('is-invalid').addClass('is-valid');
+			percent += 50;
+		}
+		$(".progress-bar").css('width', percent + '%');
+
+	}
+	catch(e){
+		console.log(e);
+	}
+	if(error){ return false}
+}
+
 
 function volverPaso1(){
 	$('#paso2').hide();
