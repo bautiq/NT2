@@ -468,8 +468,11 @@ function validarFormPaso5(){
 			$('#chkTerms').removeClass('is-invalid').addClass('is-valid');
 			percent += 50;
 		}
-		
 		$(".progress-bar").css('width', percent + '%');	
+	}
+		catch(e){
+
+		}
 
 	if(error){
 		return false;
