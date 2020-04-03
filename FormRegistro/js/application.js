@@ -167,14 +167,16 @@ function validarFormPaso1() {
 	if(!error){
 		$("#paso1").hide();
 		$("#paso2").show('slow');
+		var percent = 20;
+		$(".progress-bar").css('width', percent + '%');
+
 	}  
 }
 
 function validarFormPaso2() {
 	
-	var percent = 20;
+	var percent;
 	var error = false;
-	$(".progress-bar").css('width', percent + '%');
 	percent = 0;
 	try {
 		if (document.getElementById('txtCalle').value == "") {
@@ -219,13 +221,15 @@ function validarFormPaso2() {
 	if(!error){
 		$("#paso2").hide();
 		$("#paso3").show('slow');
+		percent = 40;
+		$(".progress-bar").css('width', percent + '%');
 	}
 
 }
 
 function validarFormPaso3(){
 	
-	var percent = 40;
+	var percent;
 	var error = false;
 	$(".progress-bar").css('width', percent + '%');
 	percent = 0;
@@ -265,12 +269,14 @@ function validarFormPaso3(){
 	if(!error){
 		$("#paso3").hide();
 		$("#paso4").show('slow');
+		percent = 60;
+		$(".progress-bar").css('width', percent + '%');
 	}  
 }
 
 function validarFormPaso4() {
 
-    var percent = 60;
+    var percent;
     var error = false;
 	$(".progress-bar").css('width', percent + '%');
 	percent = 0;
@@ -336,11 +342,13 @@ function validarFormPaso4() {
 
     if (!error) {
         $("#paso4").hide();
-        $("#paso5").show('slow');
+		$("#paso5").show('slow');
+		percent = 80;
+		$(".progress-bar").css('width', percent + '%');
     }
 }
 function validarFormPaso5(){
-	var percent = 80;
+	var percent;
 	var error = false;
 	$(".progress-bar").css('width', percent + '%');
 	percent = 0;
@@ -365,7 +373,16 @@ function validarFormPaso5(){
 	catch(e){
 		console.log(e);
 	}
-	if(error){ return false}
+
+	if(error){
+		return false;
+	} else alert("Ha completado exitosamente el formulario")
+
+
+	
+	percent = 100;
+	$(".progress-bar").css('width', percent + '%');
+
 }
 
 
