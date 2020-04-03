@@ -1,14 +1,4 @@
 $(document).ready(function () {
-
-	$('input').on('blur', function () {
-		$('#helpInfo').html("Información adicional");
-	});
-
-	$('input').on('focus', function () {
-		if ($(this).data('info'))
-			$('#helpInfo').html($(this).data('info'));
-	});
-
 	$('#txtphone').mask('(00) 0000-0000');
 	$('#txtphone_lab').mask('(00) 0000-0000');
 });
@@ -273,7 +263,7 @@ function validarFormPaso2() {
 		} else {
 			//Con JQuery
 			$('#txtCalle').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 25;
 		}
 		
 
@@ -282,14 +272,14 @@ function validarFormPaso2() {
 			error = true;
 		} else {
 			$('#txtAltura').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 25;
 		}
 		if (document.getElementById("txtDto").value == ""){
 			error = true;
 			document.getElementById("txtDto").setAttribute("class", "form-control is-invalid");
 		} else {
 			$('#txtDto').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 25;
 		}
 
 		if (document.getElementById("cmbProv").value == ""){
@@ -297,7 +287,7 @@ function validarFormPaso2() {
 			document.getElementById("cmbProv").setAttribute("class", "form-control is-invalid");
 		} else {
 			$('#cmbProv').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 25;
 		}
 			
 		$(".progress-bar").css('width', percent + '%');
@@ -341,7 +331,7 @@ function validarFormPaso3(){
 			document.getElementById("git").setAttribute("class", "form-control is-invalid");
 		} else {
 			$('#git').removeClass('is-invalid').addClass('is-valid');
-			percent += 33;
+			percent += 34;
 		}
 		
 		$(".progress-bar").css('width', percent + '%');
@@ -369,42 +359,42 @@ function validarFormPaso4() {
         } else {
             //Con JQuery
             $('#txtCalleLab').removeClass('is-invalid').addClass('is-valid');
-            percent += 5;
+            percent += 16.6;
         }
         if (document.getElementById('txtAlturaLab').value == "") {
             $('#txtAlturaLab').addClass('is-invalid');
             error = true;
         } else {
             $('#txtAlturaLab').removeClass('is-invalid').addClass('is-valid');
-            percent += 5;
+            percent += 16.6;
         }
         if (document.getElementById("txtDtoLab").value == "") {
             error = true;
             document.getElementById("txtDtoLab").setAttribute("class", "form-control is-invalid");
         } else {
             $('#txtDtoLab').removeClass('is-invalid').addClass('is-valid');
-            percent += 5;
+            percent += 16.6;
         }
         if (document.getElementById("cmbProv_lab").value == "") {
             error = true;
             document.getElementById("cmbProv_lab").setAttribute("class", "form-control is-invalid");
         } else {
             $('#cmbProv_lab').removeClass('is-invalid').addClass('is-valid');
-            percent += 5;
+            percent += 16.6;
         }
         if (document.getElementById("txtphone_lab").value == "" ) {
             error = true;
             document.getElementById("txtphone_lab").setAttribute("class", "form-control is-invalid");
         } else {
             $('#txtphone_lab').removeClass('is-invalid').addClass('is-valid');
-            percent += 5;
+            percent += 16.6;
         }
         if (document.getElementById("mat").value == "") {
             error = true;
             document.getElementById("mat").setAttribute("class", "form-control is-invalid");
         } else {
             $('#mat').removeClass('is-invalid').addClass('is-valid');
-            percent += 5;
+            percent += 16.6;
         }
 		if($('#mat').value == "si"){
 			if (document.getElementById("numMat").value == "") {
@@ -412,7 +402,7 @@ function validarFormPaso4() {
 				document.getElementById("numMat").setAttribute("class", "form-control is-invalid");
 			} else {
 				$('#numMat').removeClass('is-invalid').addClass('is-valid');
-				percent += 5;
+				percent += 0.4;
 			}
 		}	
 
