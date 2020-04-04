@@ -170,7 +170,8 @@ function validarFormPaso1() {
 		var percent = 20;
 		$(".progress-bar").css('width', percent + '%');
 
-	}  
+	} 
+	return error; 
 }
 
 function validarFormPaso2() {
@@ -224,7 +225,7 @@ function validarFormPaso2() {
 		percent = 40;
 		$(".progress-bar").css('width', percent + '%');
 	}
-
+	return error; 
 }
 
 function validarFormPaso3(){
@@ -272,6 +273,7 @@ function validarFormPaso3(){
 		percent = 60;
 		$(".progress-bar").css('width', percent + '%');
 	}  
+	return error; 
 }
 
 function validarFormPaso4() {
@@ -346,7 +348,9 @@ function validarFormPaso4() {
 		percent = 80;
 		$(".progress-bar").css('width', percent + '%');
     }
+	return error;
 }
+
 function validarFormPaso5(){
 	var percent;
 	var error = false;
@@ -373,16 +377,9 @@ function validarFormPaso5(){
 	catch(e){
 		console.log(e);
 	}
-
-	if(error){
-		return false;
-	} else alert("Ha completado exitosamente el formulario")
-
-
-	
 	percent = 100;
 	$(".progress-bar").css('width', percent + '%');
-
+	return error; 
 }
 
 
@@ -403,4 +400,16 @@ function volverPaso4(){
 	$('#paso4').show('slow');
 }
 
-
+function validarForm(){
+	if(
+		(validarFormPaso1()||
+		validarFormPaso2()||
+		validarFormPaso3()||
+		validarFormPaso4()||
+		validarFormPaso5())
+	){	
+		alert("Ha habido un error en los datos");
+	}else{
+		alert("Ha completado exitosamente el formulario");
+	}
+}

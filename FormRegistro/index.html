@@ -20,9 +20,9 @@
 <div class="container mt-3">
 <div class="row">	
   <div class="col-8">	
-	<div class="row" id="paso1">
-		<div class="col-12">
-			
+	<form name="registro" onsubmit="validarForm();">
+		<div class="row" id="paso1">
+			<div class="col-12">			
 				<h5>
 					<strong>Datos Personales</strong>
 				</h5>
@@ -165,17 +165,15 @@
 				<!-- botones -->
 				<div class="form-check">
 					<button type="button" class="btn btn-primary mt-3" onclick="validarFormPaso1();">Siguiente</button>
-				</div>	
-			
-		</div>	  
-	</div>		
+				</div>				
+			</div>	  
+		</div>		
 	
 <!------------------------------------------ PASO 2 ------------------------------------------------->
-	<br>
+		<br>
 
-	<div class="row" id="paso2" style="display: none;">
-		<div class="col-12"> <hr>
-			
+		<div class="row" id="paso2" style="display: none;">
+			<div class="col-12"> <hr>			
 				<h5>
 					<strong>Domicilio</strong>
 				</h5>
@@ -301,17 +299,15 @@
 					<div class="form-check" class="col-1">
 						<button type="button" class="btn btn-primary mt-3" onclick="validarFormPaso2();">Siguiente</button>
 					</div>
-				</div>	
-			
-		</div>	
-	</div>
+				</div>				
+			</div>	
+		</div>
 <!------------------------------------------ PASO 3 ------------------------------------------------->
 
 	<br>
 
-	<div class="row" id="paso3" style="display: none;">
-		<div class="col-12"> <hr>
-			
+		<div class="row" id="paso3" style="display: none;">
+			<div class="col-12"> <hr>			
 				<h5>
 					<strong>Datos de Contacto</strong>
 				</h5>
@@ -365,18 +361,16 @@
 					<div class="form-check" class="col-1">
 						<button type="button" class="btn btn-primary mt-3" onclick="validarFormPaso3()">Siguiente</button>
 					</div>
-				</div>
-			
+				</div>			
+			</div>
 		</div>
-	</div>
 
 <!------------------------------------------ PASO 4 -------------------------------------------------->
 		  
-<br>
+	<br>
 
-<div class="row" id="paso4" style="display: none;">
-	<div class="col-12"> <hr>
-		
+	<div class="row" id="paso4" style="display: none;">
+		<div class="col-12"> <hr>		
 			<h5>
 				<strong>Datos Laborales</strong>
 			</h5>
@@ -556,17 +550,15 @@
 				<div class="form-check" class="col-1">
 					<button type="button" class="btn btn-primary mt-3" onclick="validarFormPaso4()">Siguiente</button>
 				</div>
-			</div>	
-		
-	</div>	
-</div>
+			</div>		
+		</div>	
+	</div>
 			
 <!-------------------------------------------- PASO 5  ---------------------------------------------------->
-<br>
+	<br>
 
-	<div class="row" id="paso5" style="display: none;"> 
-		<div class="col-12"> <hr>
-					
+		<div class="row" id="paso5" style="display: none;"> 
+			<div class="col-12"> <hr>					
 				<h5>
 					<strong>Motivo por el que solicita</strong>
 				</h5>
@@ -585,7 +577,7 @@
 						</div>
 					</div>
 				</div>
-
+				<!-- botones y terminar -->
 				<div class="row">
 					<div class="col-6">
 						<div class="form-check">
@@ -596,15 +588,14 @@
 						</div>
 						<div class="form-check" class="col-1">
 							<button type="button" class="btn btn-primary mt-3" onclick="volverPaso4()">Atrás</button>
-							<button type="button" class="btn btn-primary mt-3" onclick="validarFormPaso5()">Enviar Registro</button>
+							<button type="submit" class="btn btn-primary mt-3">Enviar Registro</button>
 						</div>
 						
 					</div>	
-				</div>  
-			
-		</div>
-	</div>	
-
+				</div>  			
+			</div>
+		</div>	
+	</form>	
   </div>	
 
   <div class="col-4">
