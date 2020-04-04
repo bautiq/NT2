@@ -244,7 +244,9 @@ function validarFormPaso3(){
 			percent += 33;
 		}
 
-		if (document.getElementById('txtEmail').value == "") {
+		if (document.getElementById('txtEmail').value.indexOf("@") < 0
+			|| document.getElementById('txtEmail').value.indexOf(".") < 0
+			|| document.getElementById('txtEmail').value.length < 4) {
 			$('#txtEmail').addClass('is-invalid');
 			error = true;
 		} else {
@@ -365,6 +367,9 @@ function validarFormPaso5(){
 			percent += 50;
 		}
 		if(!document.getElementById("chkTerms").checked){
+			$('#chkTerms').parents(".form-check:first").addClass('wobble animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+				$(this).removeClass('wobble animated');
+			});
 			$('#chkTerms').addClass('is-invalid');
 			error = true;
 		} else {
@@ -401,15 +406,12 @@ function volverPaso4(){
 }
 
 function validarForm(){
-	if(
-		(validarFormPaso1()||
-		validarFormPaso2()||
-		validarFormPaso3()||
-		validarFormPaso4()||
-		validarFormPaso5())
-	){	
-		alert("Ha habido un error en los datos");
+	var res = validarFormPaso5();
+	if(res){	
+		alert("Complete el último paso");
 	}else{
 		alert("Ha completado exitosamente el formulario");
 	}
+	return res? false : true;
 }
+
