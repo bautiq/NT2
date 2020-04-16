@@ -9,7 +9,7 @@ $(document).ready(function () {
 			$('#helpInfo').html($(this).data('info'));
 	});
 
-	$('#txtphone').mask('(00) 00000-0000');
+	$('#txtphone').mask('(00) 0000-0000');
 
 });
 
@@ -18,17 +18,82 @@ function checkPronvincia() {
 
 	console.log(event.target.value);
 
-	$.get("json/buenos-aires.json", function (data) {
+	$.get("json\buenos-aires.json", function (data) {
 		console.log("Martin");
 	});
 
-	//console.log($(event.target).children(":first").data('ort'));
+		//console.log($(event.target).children(":first").data('ort'));
 
-	if (event.target.value == "ciudad") {
-		$("#cmbLocalidad").parent().show('slow');
-	} else {
-		$("#cmbLocalidad").parent().hide('slow');
-		//document.getElementById('cmbLocalidad').parentNode.setAttribute('style', 'display:none');
+		switch (event.target.value) {
+			case "caba": 				
+				$("#cmbLocGbaDiv").hide();
+				$("#txtLocOtroDiv").hide();
+				$("#cmbLocCabaDiv").show('slow'); 
+				break;
+			case "gba": 
+				$("#cmbLocCabaDiv").hide(); 
+				$("#txtLocOtroDiv").hide();
+				$("#cmbLocGbaDiv").show('slow');				
+				break;
+			case "otro": 
+				$("#cmbLocCabaDiv").hide();
+				$("#cmbLocGbaDiv").hide();
+				$("#txtLocOtroDiv").show('slow'); 
+				
+				 
+				break;
+			case "" :
+				$("#cmbLocCabaDiv").hide('slow'); 
+				$("#cmbLocGbaDiv").hide('slow');
+				$("#txtLocOtroDiv").hide('slow'); 	
+		}	
+}
+
+function checkPronvinciaLab() {
+	var object = event.target;
+
+	console.log(event.target.value);
+
+	$.get("json\buenos-aires.json", function (data) {
+		console.log("Martin");
+	});
+
+		//console.log($(event.target).children(":first").data('ort'));
+
+		switch (event.target.value) {
+			case "caba": 				
+				$("#cmbLocGbaDiv_lab").hide();
+				$("#txtLocOtroDiv_lab").hide();
+				$("#cmbLocCabaDiv_lab").show('slow'); 
+				break;
+			case "gba": 
+				$("#cmbLocCabaDiv_lab").hide(); 
+				$("#txtLocOtroDiv_lab").hide();
+				$("#cmbLocGbaDiv_lab").show('slow');				
+				break;
+			case "otro": 
+				$("#cmbLocCabaDiv_lab").hide();
+				$("#cmbLocGbaDiv_lab").hide();
+				$("#txtLocOtroDiv_lab").show('slow');  
+				break;
+			case "" :
+				$("#cmbLocCabaDiv_lab").hide('slow'); 
+				$("#cmbLocGbaDiv_lab").hide('slow');
+				$("#txtLocOtroDiv_lab").hide('slow'); 	
+		}	
+}
+
+function checkMatricula() {
+
+	switch(event.target.value){
+		case "si": 
+			$("#numMat").show('slow');
+			$("#hosp").show('slow');
+			break;
+		case "no":
+		case "":
+			$("#numMat").hide('slow');
+			$("#hosp").hide('slow');
 	}
 
 }
@@ -107,4 +172,309 @@ function validarForm(e) {
 	}
 
 	return error ? false : true;
+
+
+
+
+
+}
+//----------------------------------------------------------------------------------------------------------
+//************ Mi validación del paso 1 ************ */
+
+function validarFormPaso1(e) {
+	
+	var percent = 0;
+	var error = false;
+
+	try {
+		if (document.getElementById('nom').value == "") {
+			error = true;
+			document.getElementById('nom').setAttribute('class', 'form-control is-invalid');
+		} else {
+			//Con JQuery
+			$('#nom').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+		
+
+		if (document.getElementById('ape').value == "") {
+			$('#ape').addClass('is-invalid');
+			error = true;
+		} else {
+			$('#ape').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+
+		if (document.getElementById("cmbTipoDni").value == ""){
+			error = true;
+			document.getElementById("cmbTipoDni").setAttribute("class", "form-control is-invalid");
+		} else {
+			$('#cmbTipoDni').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+
+		if (document.getElementById("dni").value == ""){
+			error = true;
+			document.getElementById("dni").setAttribute("class", "form-control is-invalid");
+		} else {
+			$('#dni').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+
+		if (document.getElementById("ntte").value == "" || isNaN(document.getElementById("numTmte"))){
+			error = true;
+			document.getElementById("ntte").setAttribute("class", "form-control is-invalid");
+		} else {
+			$('#ntte').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+
+		if (document.getElementById("cmbNac").value == ""){
+			error = true;
+			document.getElementById("cmbNac").setAttribute("class", "form-control is-invalid");
+		} else {
+			$('#cmbNac').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+
+		if (document.getElementById("cmbGen").value == ""){
+			error = true;
+			document.getElementById("cmbGen").setAttribute("class", "form-control is-invalid");
+		} else {
+			$('#cmbGen').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+
+		if (document.getElementById("fecNac").value == ""){
+			error = true;
+			document.getElementById("fecNac").setAttribute("class", "form-control is-invalid");
+		} else {
+			$('#fecNac').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+		
+		$(".progress-bar").css('width', percent + '%');
+
+	} catch (e) {
+		console.log(e);
+	}
+
+	if(!error){
+		$("#paso1").hide();
+		$("#paso2").show('slow');
+	}  
+}
+
+function validarFormPaso2(e) {
+	
+	var percent = 0;
+	var error = false;
+
+	try {
+		if (document.getElementById('txtCalle').value == "") {
+			error = true;
+			document.getElementById('txtCalle').setAttribute('class', 'form-control is-invalid');
+		} else {
+			//Con JQuery
+			$('#txtCalle').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+		
+
+		if (document.getElementById('txtAltura').value == "") {
+			$('#txtAltura').addClass('is-invalid');
+			error = true;
+		} else {
+			$('#txtAltura').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+    
+    	if (document.getElementById("txtDto").value == ""){
+			error = true;
+			document.getElementById("txtDto").setAttribute("class", "form-control is-invalid");
+		} else {
+			$('#txtDto').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+
+		if (document.getElementById("cmbProv").value == ""){
+			error = true;
+			document.getElementById("cmbProv").setAttribute("class", "form-control is-invalid");
+		} else {
+			$('#cmbProv').removeClass('is-invalid').addClass('is-valid');
+			percent += 5;
+		}
+			
+		$(".progress-bar").css('width', percent + '%');
+    
+    } catch (e) {
+		console.log(e);
+	}
+    
+    if(!error){
+		$("#paso2").hide();
+		$("#paso3").show('slow');
+	}  
+}
+
+function validarFormPaso3(){
+	
+	var percent = 0;
+	var error = false;
+
+	try {
+		if (document.getElementById('txtphone').value == "") {
+			error = true;
+			document.getElementById('txtphone').setAttribute('class', 'form-control is-invalid');
+		} else {
+			//Con JQuery
+			$('#txtphone').removeClass('is-invalid').addClass('is-valid');
+			percent += 33;
+		}
+
+		if (document.getElementById('txtEmail').value == "") {
+			$('#txtEmail').addClass('is-invalid');
+			error = true;
+		} else {
+			$('#txtEmail').removeClass('is-invalid').addClass('is-valid');
+			percent += 33;
+		}
+
+		if (document.getElementById("git").value == ""){
+			error = true;
+			document.getElementById("git").setAttribute("class", "form-control is-invalid");
+		} else {
+			$('#git').removeClass('is-invalid').addClass('is-valid');
+			percent += 33;
+		}
+		
+		$(".progress-bar").css('width', percent + '%');
+
+		
+	} catch (e) {
+		console.log(e);
+	}
+
+	if(!error){
+		$("#paso3").hide();
+		$("#paso4").show('slow');
+	}  
+}
+
+
+//************ Mi validación del paso 4 ************ */
+function validarFormPaso4(e) {
+
+    var percent = 0;
+    var error = false;
+
+    try {
+        if (document.getElementById('txtCalleLab').value == "") {
+            error = true;
+            document.getElementById('txtCalleLab').setAttribute('class', 'form-control is-invalid');
+        } else {
+            //Con JQuery
+            $('#txtCalleLab').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+
+        if (document.getElementById('txtAlturaLab').value == "") {
+            $('#txtAlturaLab').addClass('is-invalid');
+            error = true;
+        } else {
+            $('#txtAlturaLab').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+        if (document.getElementById("txtDtoLab").value == "") {
+            error = true;
+            document.getElementById("txtDtoLab").setAttribute("class", "form-control is-invalid");
+        } else {
+            $('#txtDtoLab').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+        if (document.getElementById("cmbProv_lab").value == "") {
+            error = true;
+            document.getElementById("cmbProv_lab").setAttribute("class", "form-control is-invalid");
+        } else {
+            $('#cmbProv_lab').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+        if (document.getElementById("txtphone_lab").value == "" ) {
+            error = true;
+            document.getElementById("txtphone_lab").setAttribute("class", "form-control is-invalid");
+        } else {
+            $('#txtphone_lab').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+        if (document.getElementById("mat").value == "") {
+            error = true;
+            document.getElementById("mat").setAttribute("class", "form-control is-invalid");
+        } else {
+            $('#mat').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+        if (document.getElementById("Mat").value == "") {
+            error = true;
+            document.getElementById("Mat").setAttribute("class", "form-control is-invalid");
+        } else {
+            $('#Mat').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+        if (document.getElementById("inst").value == "") {
+            error = true;
+            document.getElementById("inst").setAttribute("class", "form-control is-invalid");
+        } else {
+            $('#inst').removeClass('is-invalid').addClass('is-valid');
+            percent += 5;
+        }
+
+        $(".progress-bar").css('width', percent + '%');
+
+    } catch (e) {
+        console.log(e);
+    }
+
+    if (!error) {
+        $("#paso4").hide();
+        $("#paso5").show('slow');
+    }
+}
+
+function validarFormPaso5(){
+	var percent = 0;
+	var error = false;
+
+	try {
+		if (document.getElementById('motivo').value == "seleccionar") {
+			error = true;
+			document.getElementById('motivo').setAttribute('class', 'form-control is-invalid');
+		} else {
+			//Con JQuery
+			$('#txtphone').removeClass('is-invalid').addClass('is-valid');
+			percent += 50;
+		}
+
+		if (!document.getElementById("chkTerms").checked) {
+			$('#chkTerms').addClass('is-invalid');
+			error = true;
+		} else {
+			$('#chkTerms').removeClass('is-invalid').addClass('is-valid');
+			percent += 50;
+		}
+		$(".progress-bar").css('width', percent + '%');	
+	}
+		catch(e){
+
+		}
+
+	if(error){
+		return false;
+	} 
 }
