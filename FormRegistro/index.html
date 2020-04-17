@@ -20,9 +20,9 @@
 <div class="container mt-3">
 <div class="row">	
   <div class="col-8">	
-	<div class="row" id="paso1">
-		<div class="col-12">
-			<form name="registro" onsubmit="validarFormPaso1()">
+	<form name="registro" onsubmit="return validarForm();">
+		<div class="row" id="paso1">
+			<div class="col-12">			
 				<h5>
 					<strong>Datos Personales</strong>
 				</h5>
@@ -37,7 +37,7 @@
 									<i class="fas fa-address-book text-primary"></i>
 								</span>
 							</div>
-							<input type="text" value="" class="form-control" id="nom" placeholder="Ingrese su nombre" name="nombre" data-info="Completa la información de este campo para continuar">
+							<input type="text" value="" class="form-control" id="nom" placeholder="Ingrese su nombre">
 							<!--i class="fas fa-question-circle" data-toggle="tooltip" title="Tooltip on bottom"></i-->
 						</div>
 					</div>
@@ -51,7 +51,7 @@
 									<i class="fas fa-address-book text-primary"></i>
 								</span>
 							</div>
-							<input type="text" value="" class="form-control" id="ape" placeholder="Ingreso su Apellido" data-info="Completa la información de este campo para continuar">
+							<input type="text" value="" class="form-control" id="ape" placeholder="Ingrese su Apellido">
 						</div>
 					</div>
 					</div>
@@ -87,7 +87,7 @@
 										<i class="fas fa-id-card text-primary"></i>
 									</span>
 								</div>
-								<input type="text" value="" class="form-control" id="dni" placeholder="Ingrese su DNI" data-info="Completa la información de este campo para continuar">
+								<input type="text" value="" class="form-control" id="dni" placeholder="Ingrese su DNI">
 							</div>
 						</div>
 					</div>
@@ -103,7 +103,7 @@
 										<i class="fas fa-id-card text-primary"></i>
 									</span>
 								</div>
-								<input type="text" value="" class="form-control" id="ntte" placeholder="Ingrese el número de trámite DNI" data-info="Completa la información de este campo para continuar">
+								<input type="text" value="" class="form-control" id="ntte" placeholder="Número de trámite">
 							</div>
 						</div>
 					</div>
@@ -157,7 +157,7 @@
 										<i class="fas fa-birthday-cake text-primary"></i>
 									</span>
 								</div>
-								<input type="date" class="form-control" id="fecNac" placeholder="Ingrese fecha de nacimiento" name="fecNac" data-info="Completa la información de este campo para continuar" required>
+								<input type="date" class="form-control" id="fecNac" placeholder="Ingrese fecha de nacimiento">
 							</div>
 						</div>
 					</div>
@@ -165,17 +165,15 @@
 				<!-- botones -->
 				<div class="form-check">
 					<button type="button" class="btn btn-primary mt-3" onclick="validarFormPaso1();">Siguiente</button>
-				</div>	
-			</form>
-		</div>	  
-	</div>		
+				</div>				
+			</div>	  
+		</div>		
 	
 <!------------------------------------------ PASO 2 ------------------------------------------------->
-	<br>
+		<br>
 
-	<div class="row" id="paso2" style="display: none;">
-		<div class="col-12"> <hr>
-			<form name="registro" onsubmit="return validarFormPaso2(event);">
+		<div class="row" id="paso2" style="display: none;">
+			<div class="col-12"> <hr>			
 				<h5>
 					<strong>Domicilio</strong>
 				</h5>
@@ -190,7 +188,7 @@
 									<i class="fas fa-road text-primary"></i>
 								</span>
 							</div>
-							<input type="text" value="" class="form-control" id="txtCalle" placeholder="Ingrese la calle" name="calle" data-info="Completa la información de este campo para continuar" required>
+							<input type="text" value="" class="form-control" id="txtCalle" placeholder="Ingrese la calle">
 						</div>
 					</div>
 					</div>
@@ -203,7 +201,7 @@
 									<i class="fas fa-building text-primary"></i>
 								</span>
 							</div>
-							<input type="text" class="form-control" id="txtAltura" placeholder="Ingrese la altura" data-info="Completa la información de este campo para continuar" required>
+							<input type="text" class="form-control" id="txtAltura" placeholder="Ingrese la altura">
 						</div>
 					</div>
 					</div>
@@ -233,8 +231,8 @@
 									</span>
 								</div>
 								<select class="form-control" id="cmbProv" onchange="checkPronvincia(event, this)">
-									<option value="" data-ort="no hay nada">Seleccionar Provincia</option>
-									<option value="caba" data-ort="data adiconal">Ciudad de Buenos Aires</option>
+									<option value="">Seleccionar Provincia</option>
+									<option value="caba">Ciudad de Buenos Aires</option>
 									<option value="gba">Gran Buenos Aires</option>
 									<option value="otro">Otro</option>
 								</select>
@@ -289,29 +287,27 @@
 									<i class="fas fa-address-book text-primary"></i>
 								</span>
 								</div>
-							<input type="text" class="form-control" id="txtLocOtro" placeholder="Ingrese la localidad" name="locOtro">
+							<input type="text" class="form-control" id="txtLocOtro" placeholder="Ingrese la localidad">
 						</div>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-check" class="col-1">
-						<button style="display: none;" type="submit" class="btn btn-primary mt-3" id="volver a paso 1">Atrás</button>
+						<button type="button" class="btn btn-primary mt-3" onclick="volverPaso1()">Atrás</button>
 					</div>
 					<div class="form-check" class="col-1">
 						<button type="button" class="btn btn-primary mt-3" onclick="validarFormPaso2();">Siguiente</button>
 					</div>
-				</div>	
-			</form>	
-		</div>	
-	</div>
+				</div>				
+			</div>	
+		</div>
 <!------------------------------------------ PASO 3 ------------------------------------------------->
 
 	<br>
 
-	<div class="row" id="paso3" style="display: none;">
-		<div class="col-12"> <hr>
-			<form name="registro" onsubmit="validarFormPaso3(event)">
+		<div class="row" id="paso3" style="display: none;">
+			<div class="col-12"> <hr>			
 				<h5>
 					<strong>Datos de Contacto</strong>
 				</h5>
@@ -360,23 +356,21 @@
 				<!-- botones-->	
 				<div class="row">
 					<div class="form-check" class="col-1">
-						<button style="display: none;" type="submit" class="btn btn-primary mt-3" id="volver a paso 2">Atrás</button>
+						<button type="button" class="btn btn-primary mt-3" onclick="volverPaso2()">Atrás</button>
 					</div>
 					<div class="form-check" class="col-1">
-						<button type="submit" class="btn btn-primary mt-3" id="ir a paso 4">Siguiente</button>
+						<button type="button" class="btn btn-primary mt-3" onclick="validarFormPaso3()">Siguiente</button>
 					</div>
-				</div>
-			</form>
+				</div>			
+			</div>
 		</div>
-	</div>
 
 <!------------------------------------------ PASO 4 -------------------------------------------------->
 		  
-<br>
+	<br>
 
-<div class="row" id="paso4" style="display: none;">
-	<div class="col-12"> <hr>
-		<form name="registro" onsubmit="return validarFormPaso4(event);">
+	<div class="row" id="paso4" style="display: none;">
+		<div class="col-12"> <hr>		
 			<h5>
 				<strong>Datos Laborales</strong>
 			</h5>
@@ -391,7 +385,7 @@
 								<i class="fas fa-road text-primary"></i>
 							</span>
 						</div>
-						<input type="text" class="form-control" id="txtCalleLab" placeholder="Ingrese la calle" name="calle" data-info="Completa la información de este campo para continuar" required>
+						<input type="text" class="form-control" id="txtCalleLab" placeholder="Ingrese la calle">
 					</div>
 				</div>
 				</div>
@@ -404,7 +398,7 @@
 									<i class="fas fa-building text-primary"></i>
 								</span>
 							</div>
-							<input type="text" class="form-control" id="txtAlturaLab" placeholder="Ingrese la altura" data-info="Completa la información de este campo para continuar" required>
+							<input type="text" class="form-control" id="txtAlturaLab" placeholder="Ingrese la altura">
 						</div>
 					</div>
 				</div>
@@ -435,7 +429,7 @@
 								</span>
 							</div>
 							<select class="form-control" id="cmbProv_lab" onchange="checkPronvinciaLab(event, this)">
-								<option value="" data-ort="no hay nada">Seleccionar Provincia</option>
+								<option value="">Seleccionar Provincia</option>
 								<option value="caba" data-ort="data adiconal">Ciudad de Buenos Aires</option>
 								<option value="gba">Gran Buenos Aires</option>
 								<option value="otro">Otro</option>
@@ -523,14 +517,14 @@
 				</div>
 				<div class="col-6" id="numMat" style="display: none;">
 					<div class="form-group">
-						<label for="mat">Número de Matrícula</label>
+						<label for="numMat">Número de Matrícula</label>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="basic-addon1">
 									<i class="fas fa-id-badge text-primary"></i>
 								</span>
 							</div>
-							<input type="text" class="form-control" id="Mat" placeholder="Ingrese N° Matrícula">
+							<input type="text" class="form-control" id="numMat" placeholder="Ingrese N° Matrícula">
 						</div>	
 					</div>
 				</div>
@@ -551,25 +545,20 @@
 			<!-- botones -->
 			<div class="row">
 				<div class="form-check" class="col-1">
-					<button style="display: none;" type="submit" class="btn btn-primary mt-3" id="volver a paso 2">Atrás</button>
+					<button type="button" class="btn btn-primary mt-3" onclick="volverPaso3()">Atrás</button>
 				</div>
 				<div class="form-check" class="col-1">
-					<button type="submit" class="btn btn-primary mt-3" id="ir a paso 5">Siguiente</button>
+					<button type="button" class="btn btn-primary mt-3" onclick="validarFormPaso4()">Siguiente</button>
 				</div>
-			</div>	
-		</form>	
-	</div>	
-</div>
-		  
-		  
-
+			</div>		
+		</div>	
+	</div>
 			
 <!-------------------------------------------- PASO 5  ---------------------------------------------------->
-<br>
+	<br>
 
-	<div class="row" id="paso5" style="display: none;"> 
-		<div class="col-12"> <hr>
-			<form name="registro" onsubmit="return validarFormPaso5(event)">		
+		<div class="row" id="paso5" style="display: none;"> 
+			<div class="col-12"> <hr>					
 				<h5>
 					<strong>Motivo por el que solicita</strong>
 				</h5>
@@ -588,7 +577,7 @@
 						</div>
 					</div>
 				</div>
-
+				<!-- botones y terminar -->
 				<div class="row">
 					<div class="col-6">
 						<div class="form-check">
@@ -597,13 +586,16 @@
 								<a href="javascript:void();" data-toggle="modal" data-target="#exampleModal">Terminos y Condiciones</a>
 							</label>						
 						</div>
-						<button type="submit" class="btn btn-primary mt-3" id="enviar">Enviar Registro</button>
+						<div class="form-check" class="col-1">
+							<button type="button" class="btn btn-primary mt-3" onclick="volverPaso4()">Atrás</button>
+							<button type="submit" class="btn btn-primary mt-3">Enviar Registro</button>
+						</div>
+						
 					</div>	
-				</div>  
-			</form>
-		</div>
-	</div>	
-
+				</div>  			
+			</div>
+		</div>	
+	</form>	
   </div>	
 
   <div class="col-4">

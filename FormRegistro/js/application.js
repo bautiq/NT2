@@ -1,16 +1,6 @@
 $(document).ready(function () {
-
-	$('input').on('blur', function () {
-		$('#helpInfo').html("Información adicional");
-	});
-
-	$('input').on('focus', function () {
-		if ($(this).data('info'))
-			$('#helpInfo').html($(this).data('info'));
-	});
-
 	$('#txtphone').mask('(00) 0000-0000');
-
+	$('#txtphone_lab').mask('(00) 0000-0000');
 });
 
 function checkPronvincia() {
@@ -98,111 +88,26 @@ function checkMatricula() {
 
 }
 
-function validarForm(e) {
-	var first = false;
-	var percent = 0;
-	var error = false;
-
-	try {
-		if (document.getElementById('txtNombre').value == "") {
-			error = true;
-			document.getElementById('txtNombre').setAttribute('class', 'form-control is-invalid');
-		} else {
-			percent += 10;
-			//Con JQuery
-			$('#txtNombre').removeClass('is-invalid').addClass('is-valid');
-		}
-
-		if (document.getElementById('txtApellido').value == "") {
-			$('#txtApellido').addClass('is-invalid');
-			error = true;
-		} else {
-			percent += 10;
-			$('#txtApellido').removeClass('is-invalid').addClass('is-valid');
-		}
-
-		if (document.getElementById('txtDni').value == ""
-			|| !Number(document.getElementById('txtDni').value)) {
-			$('#txtDni').addClass('is-invalid');
-			error = true;
-		} else {
-			percent += 10;
-			$('#txtDni').removeClass('is-invalid').addClass('is-valid');
-		}
-
-		if ($('#cmbProvincia').val() == "") {
-			$('#cmbProvincia').addClass('is-invalid');
-			error = true;
-		} else {
-			percent += 10;
-			$('#cmbProvincia').removeClass('is-invalid').addClass('is-valid');
-		}
-
-		if (document.getElementById('txtEmail').value.indexOf("@") < 0
-			|| document.getElementById('txtEmail').value.indexOf(".") < 0
-			|| document.getElementById('txtEmail').value.length < 4) {
-			$('#txtEmail').addClass('is-invalid');
-			error = true;
-		} else {
-			percent += 20;
-			$('#txtEmail').removeClass('is-invalid').addClass('is-valid');
-		}
-
-		if ($('#txtphone').val() == "") {
-			error = true;
-			$('#txtphone').addClass('is-invalid');
-		} else {
-			percent += 20;
-			$('#txtphone').removeClass('is-invalid').addClass('is-valid');
-		}
-
-		if (!$("#chkTerms").is(':checked')) {
-
-			$('#chkTerms').parents(".form-check:first").addClass('wobble animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
-				$(this).removeClass('wobble animated');
-			});
-		}
-
-		$(".progress-bar").css('width', percent + '%');
-
-		return false;
-
-	} catch (e) {
-		console.log(e);
-	}
-
-	return error ? false : true;
-
-
-
-
-
-}
-//----------------------------------------------------------------------------------------------------------
-//************ Mi validación del paso 1 ************ */
-
-function validarFormPaso1(e) {
+function validarFormPaso1() {
 	
 	var percent = 0;
 	var error = false;
-
+	var nombre = document.getElementById("nom"); 
 	try {
-		if (document.getElementById('nom').value == "") {
+		if (nombre.value == "") {
 			error = true;
-			document.getElementById('nom').setAttribute('class', 'form-control is-invalid');
+			nombre.setAttribute('class', 'form-control is-invalid');
 		} else {
-			//Con JQuery
 			$('#nom').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 12.5;
 		}
-		
 
-		if (document.getElementById('ape').value == "") {
+		if ($('#ape').value == "") {
 			$('#ape').addClass('is-invalid');
 			error = true;
 		} else {
 			$('#ape').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 12.5;
 		}
 
 		if (document.getElementById("cmbTipoDni").value == ""){
@@ -210,7 +115,7 @@ function validarFormPaso1(e) {
 			document.getElementById("cmbTipoDni").setAttribute("class", "form-control is-invalid");
 		} else {
 			$('#cmbTipoDni').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 12.5;
 		}
 
 		if (document.getElementById("dni").value == ""){
@@ -218,7 +123,7 @@ function validarFormPaso1(e) {
 			document.getElementById("dni").setAttribute("class", "form-control is-invalid");
 		} else {
 			$('#dni').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 12.5;
 		}
 
 		if (document.getElementById("ntte").value == "" || isNaN(document.getElementById("numTmte"))){
@@ -226,7 +131,7 @@ function validarFormPaso1(e) {
 			document.getElementById("ntte").setAttribute("class", "form-control is-invalid");
 		} else {
 			$('#ntte').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 12.5;
 		}
 
 		if (document.getElementById("cmbNac").value == ""){
@@ -234,7 +139,7 @@ function validarFormPaso1(e) {
 			document.getElementById("cmbNac").setAttribute("class", "form-control is-invalid");
 		} else {
 			$('#cmbNac').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 12.5;
 		}
 
 		if (document.getElementById("cmbGen").value == ""){
@@ -242,7 +147,7 @@ function validarFormPaso1(e) {
 			document.getElementById("cmbGen").setAttribute("class", "form-control is-invalid");
 		} else {
 			$('#cmbGen').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 12.5;
 		}
 
 		if (document.getElementById("fecNac").value == ""){
@@ -250,7 +155,7 @@ function validarFormPaso1(e) {
 			document.getElementById("fecNac").setAttribute("class", "form-control is-invalid");
 		} else {
 			$('#fecNac').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 12.5;
 		}
 		
 		$(".progress-bar").css('width', percent + '%');
@@ -262,14 +167,18 @@ function validarFormPaso1(e) {
 	if(!error){
 		$("#paso1").hide();
 		$("#paso2").show('slow');
-	}  
+		var percent = 20;
+		$(".progress-bar").css('width', percent + '%');
+
+	} 
+	return error; 
 }
 
-function validarFormPaso2(e) {
+function validarFormPaso2() {
 	
-	var percent = 0;
+	var percent;
 	var error = false;
-
+	percent = 0;
 	try {
 		if (document.getElementById('txtCalle').value == "") {
 			error = true;
@@ -277,7 +186,7 @@ function validarFormPaso2(e) {
 		} else {
 			//Con JQuery
 			$('#txtCalle').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 25;
 		}
 		
 
@@ -286,15 +195,14 @@ function validarFormPaso2(e) {
 			error = true;
 		} else {
 			$('#txtAltura').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 25;
 		}
-    
-    	if (document.getElementById("txtDto").value == ""){
+		if (document.getElementById("txtDto").value == ""){
 			error = true;
 			document.getElementById("txtDto").setAttribute("class", "form-control is-invalid");
 		} else {
 			$('#txtDto').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 25;
 		}
 
 		if (document.getElementById("cmbProv").value == ""){
@@ -302,26 +210,30 @@ function validarFormPaso2(e) {
 			document.getElementById("cmbProv").setAttribute("class", "form-control is-invalid");
 		} else {
 			$('#cmbProv').removeClass('is-invalid').addClass('is-valid');
-			percent += 5;
+			percent += 25;
 		}
 			
 		$(".progress-bar").css('width', percent + '%');
-    
-    } catch (e) {
+
+	} catch (e) {
 		console.log(e);
 	}
-    
-    if(!error){
+
+	if(!error){
 		$("#paso2").hide();
 		$("#paso3").show('slow');
-	}  
+		percent = 40;
+		$(".progress-bar").css('width', percent + '%');
+	}
+	return error; 
 }
 
 function validarFormPaso3(){
 	
-	var percent = 0;
+	var percent;
 	var error = false;
-
+	$(".progress-bar").css('width', percent + '%');
+	percent = 0;
 	try {
 		if (document.getElementById('txtphone').value == "") {
 			error = true;
@@ -332,7 +244,9 @@ function validarFormPaso3(){
 			percent += 33;
 		}
 
-		if (document.getElementById('txtEmail').value == "") {
+		if (document.getElementById('txtEmail').value.indexOf("@") < 0
+			|| document.getElementById('txtEmail').value.indexOf(".") < 0
+			|| document.getElementById('txtEmail').value.length < 4) {
 			$('#txtEmail').addClass('is-invalid');
 			error = true;
 		} else {
@@ -345,7 +259,7 @@ function validarFormPaso3(){
 			document.getElementById("git").setAttribute("class", "form-control is-invalid");
 		} else {
 			$('#git').removeClass('is-invalid').addClass('is-valid');
-			percent += 33;
+			percent += 34;
 		}
 		
 		$(".progress-bar").css('width', percent + '%');
@@ -358,16 +272,18 @@ function validarFormPaso3(){
 	if(!error){
 		$("#paso3").hide();
 		$("#paso4").show('slow');
+		percent = 60;
+		$(".progress-bar").css('width', percent + '%');
 	}  
+	return error; 
 }
 
+function validarFormPaso4() {
 
-//************ Mi validación del paso 4 ************ */
-function validarFormPaso4(e) {
-
-    var percent = 0;
+    var percent;
     var error = false;
-
+	$(".progress-bar").css('width', percent + '%');
+	percent = 0;
     try {
         if (document.getElementById('txtCalleLab').value == "") {
             error = true;
@@ -375,65 +291,52 @@ function validarFormPaso4(e) {
         } else {
             //Con JQuery
             $('#txtCalleLab').removeClass('is-invalid').addClass('is-valid');
-            percent += 5;
+            percent += 16.6;
         }
-
-
         if (document.getElementById('txtAlturaLab').value == "") {
             $('#txtAlturaLab').addClass('is-invalid');
             error = true;
         } else {
             $('#txtAlturaLab').removeClass('is-invalid').addClass('is-valid');
-            percent += 5;
+            percent += 16.6;
         }
-
         if (document.getElementById("txtDtoLab").value == "") {
             error = true;
             document.getElementById("txtDtoLab").setAttribute("class", "form-control is-invalid");
         } else {
             $('#txtDtoLab').removeClass('is-invalid').addClass('is-valid');
-            percent += 5;
+            percent += 16.6;
         }
-
         if (document.getElementById("cmbProv_lab").value == "") {
             error = true;
             document.getElementById("cmbProv_lab").setAttribute("class", "form-control is-invalid");
         } else {
             $('#cmbProv_lab').removeClass('is-invalid').addClass('is-valid');
-            percent += 5;
+            percent += 16.6;
         }
-
         if (document.getElementById("txtphone_lab").value == "" ) {
             error = true;
             document.getElementById("txtphone_lab").setAttribute("class", "form-control is-invalid");
         } else {
             $('#txtphone_lab').removeClass('is-invalid').addClass('is-valid');
-            percent += 5;
+            percent += 16.6;
         }
-
         if (document.getElementById("mat").value == "") {
             error = true;
             document.getElementById("mat").setAttribute("class", "form-control is-invalid");
         } else {
             $('#mat').removeClass('is-invalid').addClass('is-valid');
-            percent += 5;
+            percent += 16.6;
         }
-
-        if (document.getElementById("Mat").value == "") {
-            error = true;
-            document.getElementById("Mat").setAttribute("class", "form-control is-invalid");
-        } else {
-            $('#Mat').removeClass('is-invalid').addClass('is-valid');
-            percent += 5;
-        }
-
-        if (document.getElementById("inst").value == "") {
-            error = true;
-            document.getElementById("inst").setAttribute("class", "form-control is-invalid");
-        } else {
-            $('#inst').removeClass('is-invalid').addClass('is-valid');
-            percent += 5;
-        }
+		if($('#mat').value == "si"){
+			if (document.getElementById("numMat").value == "") {
+				error = true;
+				document.getElementById("numMat").setAttribute("class", "form-control is-invalid");
+			} else {
+				$('#numMat').removeClass('is-invalid').addClass('is-valid');
+				percent += 0.4;
+			}
+		}	
 
         $(".progress-bar").css('width', percent + '%');
 
@@ -443,38 +346,72 @@ function validarFormPaso4(e) {
 
     if (!error) {
         $("#paso4").hide();
-        $("#paso5").show('slow');
+		$("#paso5").show('slow');
+		percent = 80;
+		$(".progress-bar").css('width', percent + '%');
     }
+	return error;
 }
 
 function validarFormPaso5(){
-	var percent = 0;
+	var percent;
 	var error = false;
-
-	try {
-		if (document.getElementById('motivo').value == "seleccionar") {
+	$(".progress-bar").css('width', percent + '%');
+	percent = 0;
+	try{
+		if(document.getElementById("motivo").value == "seleccionar"){
 			error = true;
-			document.getElementById('motivo').setAttribute('class', 'form-control is-invalid');
+			$('#motivo').addClass('is-invalid');
 		} else {
-			//Con JQuery
-			$('#txtphone').removeClass('is-invalid').addClass('is-valid');
+			$('#motivo').removeClass('is-invalid').addClass('is-valid');
 			percent += 50;
 		}
-
-		if (!document.getElementById("chkTerms").checked) {
+		if(!document.getElementById("chkTerms").checked){
+			$('#chkTerms').parents(".form-check:first").addClass('wobble animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+				$(this).removeClass('wobble animated');
+			});
 			$('#chkTerms').addClass('is-invalid');
 			error = true;
 		} else {
 			$('#chkTerms').removeClass('is-invalid').addClass('is-valid');
 			percent += 50;
 		}
-		$(".progress-bar").css('width', percent + '%');	
+		$(".progress-bar").css('width', percent + '%');
+
 	}
-		catch(e){
-
-		}
-
-	if(error){
-		return false;
-	} 
+	catch(e){
+		console.log(e);
+	}
+	percent = 100;
+	$(".progress-bar").css('width', percent + '%');
+	return error; 
 }
+
+
+function volverPaso1(){
+	$('#paso2').hide();
+	$('#paso1').show('slow');
+}
+function volverPaso2(){
+	$('#paso3').hide();
+	$('#paso2').show('slow');
+}
+function volverPaso3(){
+	$('#paso4').hide();
+	$('#paso3').show('slow');
+}
+function volverPaso4(){
+	$('#paso5').hide();
+	$('#paso4').show('slow');
+}
+
+function validarForm(){
+	var res = validarFormPaso5();
+	if(res){	
+		alert("Complete el último paso");
+	}else{
+		alert("Ha completado exitosamente el formulario");
+	}
+	return res? false : true;
+}
+
